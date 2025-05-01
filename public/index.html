@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>autism</title>
+</head>
+<body>
+    <h1></h1>
+    
+    <script>
+        async function getPublicIP() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error('Error getting public IP:', error);
+                return null;
+            }
+        }
+
+        async function reportIP() {
+            const ip = await getPublicIP();
+            if (ip) {
+                try {
+                    const response = await fetch('http://localhost:3000/report-ip', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ ip }),
+                    });
+                    
+                    // If response is redirect to /vpn
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                } catch (error) {
+                    console.error('Error reporting IP:', error);
+                }
+            }
+        }
+
+        window.onload = reportIP;
+    </script>
+</body>
+</html>
