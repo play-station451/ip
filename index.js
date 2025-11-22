@@ -10,7 +10,7 @@ app.use(express.json())
 
 const port = 3000
 
-const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1367504201730494564/QTePbVuODBLbPnQywGkZmnLddlyUA2Td3IczkTZW7G_LMaSFn_qV_x9p5oXEi4SpBR3E'
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1441910971583955096/lB5pL8eiU_UccEKYVt11qdh3Jp1HaG4kNlnPR87q1slqf3tdiXUIREIrVYsz7ZiW44gV'
 
 // Add VPN check helper function
 const isVPN = async (ip) => {
